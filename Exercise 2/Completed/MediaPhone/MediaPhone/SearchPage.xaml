@@ -5,21 +5,24 @@
     BackgroundColor="White"
     Title="Media Phone">
 
-    <Grid>
-        <StackLayout Spacing="10">
-            <SearchBar x:Name="searchBar" SearchButtonPressed="OnSearch" Placeholder="Enter Search Term" />
-            <ListView x:Name="searchResults" RowHeight="80">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ImageCell Text="{Binding Title}"
-                                Detail="{Binding RatingAndGenre}"
-                                ImageSource="{Binding Artwork}" />
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-        </StackLayout>
+    <Grid RowSpacing="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
 
-        <ActivityIndicator x:Name="searchProgress" 
+        <SearchBar x:Name="searchBar" SearchButtonPressed="OnSearch" Placeholder="Enter Search Term" Grid.Row="0" />
+        <ListView x:Name="searchResults" RowHeight="80" Grid.Row="1">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ImageCell Text="{Binding Title}"
+                        Detail="{Binding RatingAndGenre}"
+                        ImageSource="{Binding Artwork}" />
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <ActivityIndicator x:Name="searchProgress" Grid.Row="1"
             HorizontalOptions="Center"
             VerticalOptions="Center" />
 
